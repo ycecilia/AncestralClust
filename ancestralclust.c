@@ -15,6 +15,17 @@
 #include "hashmap.h"
 #include "WFA2/wavefront_align.h"
 
+// Function prototypes
+int sortseq(int alignment_length, int number_of_sequences, int** seq, int* mult);
+int seqid(int i, int j, int number_of_sequences, int** seq);
+int perform_WFA_alignment(cigar_t* const cigar, mm_allocator_t* mm_allocator, char* seq1, char* seq2, char* const pattern_alg, char* const text_alg, char* const ops_alg, int begin_offset, int end_offset);
+int findLCA(node** tree, int nodeA, int nodeB, int whichTree);
+int findLCA(node** tree, int nodeA, int nodeB);
+int findLeftOrRight(node** tree, int whichTree, int node, int findNode);
+void calculateTotalDistanceFromRoot(int node, double distance, int whichTree);
+int findParentCut(node** tree, int node, int whichTree);
+double like_bl_Arr(double par[2], int whichRoot, int numbase, int root, int numspec, int** seqArr);
+
 //struct hashmap map;
 char*** clusters;
 //char** seqNames;

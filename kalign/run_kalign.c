@@ -23,6 +23,7 @@
 #ifdef HAVE_OPENMP
 #include <omp.h>
 #endif
+#include <unistd.h>
 
 #include "global.h"
 
