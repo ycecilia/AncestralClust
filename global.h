@@ -6,6 +6,17 @@
 #ifndef _GLOBAL_
 #define _GLOBAL_
 
+// Complex number type definition
+typedef struct {
+    double re;
+    double im;
+} complex;
+
+// Macro definitions
+#define FOR(i,n) for(i=0;i<n;i++)
+#define max(a,b) ((a) > (b) ? (a) : (b))
+#define min(a,b) ((a) < (b) ? (a) : (b))
+
 #define FASTA_MAXLINE 6000
 #define MAXNAME 30
 #define MIN_SEQ 100

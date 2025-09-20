@@ -5144,7 +5144,7 @@ int main(int argc, char **argv){
 		sequencesToClusterLater[i] = -1;
 	}
 	
-	gzFile *fasta_to_assign = gzopen(opt.fasta,"r");
+	gzFile fasta_to_assign = gzopen(opt.fasta,"r");
 	FILE* taxonomy_file;
 	if (opt.hasTaxFile==1){
 		if (( taxonomy_file = fopen(opt.taxonomy,"r")) == (FILE *) NULL ) fprintf(stderr,"TAXONOMY file could not be opened.\n");
@@ -5442,7 +5442,7 @@ int main(int argc, char **argv){
 			actualSeqsToPrint[i] = (char *)malloc((fasta_specs[1]+1)*sizeof(char));
 		}
 		if (opt.output_fasta==1){
-			gzFile *fasta_to_assign = gzopen(opt.fasta,"r");
+			gzFile fasta_to_assign = gzopen(opt.fasta,"r");
 			FILE* taxonomy_file;
 			printLessThanFour(fasta_to_assign, numberOfUnAssigned, opt, starting_number_of_clusters, taxonomy_file, fasta_specs[2], fasta_specs[1]+1,sequencesToClusterLater,seqsToPrint,actualSeqsToPrint);
 		}
