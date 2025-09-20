@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 #include <time.h>
 #include <assert.h>
 #include <pthread.h>
@@ -20,11 +21,20 @@ int sortseq(int alignment_length, int number_of_sequences, int** seq, int* mult)
 int seqid(int i, int j, int number_of_sequences, int** seq);
 int perform_WFA_alignment(cigar_t* const cigar, mm_allocator_t* mm_allocator, char* seq1, char* seq2, char* const pattern_alg, char* const text_alg, char* const ops_alg, int begin_offset, int end_offset);
 int findLCA(node** tree, int nodeA, int nodeB, int whichTree);
-int findLCA(node** tree, int nodeA, int nodeB);
 int findLeftOrRight(node** tree, int whichTree, int node, int findNode);
 void calculateTotalDistanceFromRoot(int node, double distance, int whichTree);
 int findParentCut(node** tree, int node, int whichTree);
 double like_bl_Arr(double par[2], int whichRoot, int numbase, int root, int numspec, int** seqArr);
+
+// Function prototypes for missing functions
+int eigen(int job, double A[], int n, double rr[], double ri[], double vr[], double vi[], double w[]);
+int matinv(double x[], int n, int m, double space[]);
+void definegammaquantiles(int k, double par[2]);
+double findmax_Arr(double newinvecter[], double lowbound[], double upbound[], int n, double (*fun)(double x[], int, int, int, int, int***), int precisionlevel, int whichRoot, int numbase, int root, int numspec, int*** seqArr);
+void doNRinits(int n);
+void freeNRinits(int n);
+void parse_options(int argc, char **argv, Options *opt);
+int main_kalign(int num_seq, char** names, char** sequences, int*** seqArr, int* numbase, int treeNum, int numthreads);
 
 //struct hashmap map;
 char*** clusters;
@@ -2223,7 +2233,7 @@ int findMaxClade(node** tree, int number_of_leaves, double** distMat2){
 	int numberOfNodesToCut = 0;
 	for(i=0; i<number_of_leaves; i++){
 		for(j=i+1; j<number_of_leaves; j++){
-			int lca = findLCA(tree,i,j);
+			int lca = findLCA(tree,i,j,0);
 			//printf("LCA is %d\n",lca);
 			//double* distance = (double *)malloc(1*sizeof(double));
 			//distance[0]=0;

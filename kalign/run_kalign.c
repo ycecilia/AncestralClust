@@ -470,8 +470,8 @@ int run_kalign(struct parameters* param, int number_of_seqs, char** names_of_seq
         int i;
 
 #ifdef HAVE_OPENMP
-        omp_set_nested(1);
-        omp_set_num_threads(param->nthreads);
+        // omp_set_nested(1);
+        // omp_set_num_threads(param->nthreads);
 #endif
 
         if(param->num_infiles == 1){
@@ -552,7 +552,7 @@ int run_kalign(struct parameters* param, int number_of_seqs, char** names_of_seq
                 i = floor(log((double) param->nthreads) / log(2.0)) + 4;
                 i = MACRO_MIN(i, 10);
                 /* LOG_MSG("Set %d level (%d)", i, param->nthreads); */
-                omp_set_max_active_levels(i);
+                // omp_set_max_active_levels(i);
 #endif
                 RUN(build_tree_kmeans(msa,ap,&tasks));
         }
@@ -575,7 +575,7 @@ int run_kalign(struct parameters* param, int number_of_seqs, char** names_of_seq
         i = floor(log((double) param->nthreads) / log(2.0)) + 2;
         i = MACRO_MIN(i, 10);
         /* LOG_MSG("Set %d level (%d)", i, param->nthreads); */
-        omp_set_max_active_levels(i);
+        // omp_set_max_active_levels(i);
 #endif
         if(param->chaos){
 

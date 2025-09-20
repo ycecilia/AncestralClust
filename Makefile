@@ -5,7 +5,7 @@ CC = gcc
 # -g adds debugging information to the executable file
 # -Wall turns on most, but not all, compiler warnings
 CFLAGS = -w -pg
-DBGCFLAGS = -g -w -fopenmp
+DBGCFLAGS = -g -w
 # -lm links the math library
 #LIBS = -lm -lpthread -lz
 LIBS = -lm -pthread -lz -std=gnu99
@@ -23,7 +23,7 @@ TARGET = ancestralclust
 
 all: $(TARGET)
 $(TARGET): $(TARGET).c
-	$(CC) $(OPENMP) -o $(TARGET) $(NEEDLEMANWUNSCH) $(HASHMAP) $(KALIGN) $(WFA2) $(SOURCES) $(LIBS)
+	$(CC) -o $(TARGET) $(NEEDLEMANWUNSCH) $(HASHMAP) $(KALIGN) $(WFA2) $(SOURCES) $(LIBS)
 debug: $(TARGET).c
 	$(CC) $(DBGCFLAGS) -o $(TARGET) $(NEEDLEMANWUNSCH) $(HASHMAP) $(KALIGN) $(WFA2) $(SOURCES) $(LIBS)
 
